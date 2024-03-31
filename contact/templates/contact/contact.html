@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}  <!-- Extends base.html template -->
+{% load crispy_forms_tags %}  <!-- Loads crispy_forms_tags to render the form -->
+
+{% block content %}
+<div class="row">
+    <div class="col-11 col-md-4 mx-auto mt-5">
+    <h1>Contact Us</h1>
+        <!-- Contact form -->
+        <form method="post">
+            {% csrf_token %}  <!-- CSRF token for form security -->
+            {{ form|crispy }}  <!-- Renders the form using crispy forms -->
+            <div class="form-group">
+                <button class="btn btn-secondary" type="submit">Submit</button>  <!-- Submit button -->
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
