@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render  # Importing render function from Django's shortcuts module
+from django.views import View  # Importing View class from Django's views module
 
-# Create your views here.
+# Defining a view for displaying the city guide
+class CityGuide(View):
+    def get(self, request):
+        return render(request, 'cityguide/cityguide.html')  # Rendering the city guide template
