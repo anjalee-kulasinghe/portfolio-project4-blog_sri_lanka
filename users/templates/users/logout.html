@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}  <!-- Extending the base.html template -->
+
+{% block content %}  <!-- Opening the content block -->
+	<div class="row">
+		<div class="col-11 col-md-4 mx-auto mt-5">
+			<h1>You have been logged out!</h1>  <!-- Heading indicating successful logout -->
+			<div class="border-top pt-3">
+				<small class="text-muted">
+					<a href="{% url 'login' %}">Log in again</a>  <!-- Link to Log in page -->
+				</small>
+			</div>
+        </div>
+	</div>
+{% endblock content %}  <!-- Closing the content block -->
