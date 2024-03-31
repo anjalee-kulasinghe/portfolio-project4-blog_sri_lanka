@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %} <!-- Extends base.html template -->
+
+{% load static %} <!-- Load static files -->
+
+{% block content %}
+<!-- Start: Banner Image -->
+<div class="row">
+    <div class="col-12">
+        <img src="{% static 'main_banner.png' %}" class="img-fluid" alt="Banner Image"> <!-- Display banner image -->
+    </div>
+</div>
+<!-- End: Banner Image -->
+
+<div class="row">
+    <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
+        <h1 class="fw-bolder">Find your way to Sri Lanka</h1>
+        <h5 class="text-muted">A blog about Sri Lanka</h5>
+
+        <!-- Introduction to the blog -->
+        <p>Ayubowan! (May you be gifted with a long life) Welcome to Sri Lanka, the resplendent Pearl of the Indian Ocean!</p>
+
+        <!-- Highlights of Sri Lanka -->
+        <p>Are you here to soak up the sun on our pristine beaches, explore the ancient ruins whispered about in legends, or delve into the verdant hills teeming with wildlife? Sri Lanka caters to every taste.</p>
+
+        <!-- List of activities -->
+        <p>Perhaps you'd like to:</p>
+        <ul>
+            <li>Hike the misty mountains and witness breathtaking views from Sigiriya, the Lion Rock fortress?</li>
+            <li>Witness the vibrant cultural tapestry in Kandy, a UNESCO World Heritage city?</li>
+            <li>Savor the taste of fragrant Ceylon tea at a hilltop plantation?</li>
+            <li>Learn to surf the turquoise waves along the southern coast?</li>
+        </ul>
+        <!-- Invitation for questions -->
+        <p>No matter your dream Sri Lankan adventure, we're here to make it unforgettable. Just ask away if you have any questions about must-see places, hidden gems, or local customs!</p>
+    </div>
+</div>
+{% endblock content %}
