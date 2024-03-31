@@ -16,7 +16,7 @@ urlpatterns = [
     path('traveltips/', include('traveltips.urls')),  # Including traveltips URLs
     path('blog/', BlogView.as_view(), name='blog'),  # Mapping blog URLs
     path('article/<int:pk>/add_comment/', add_comment, name='add_comment'),  # Mapping add_comment URLs
-        path('search/', search, name='search'),
+    path('search/', search, name='search'),
 ]
 
 # Adding URL patterns for serving media files during development

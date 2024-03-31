@@ -91,4 +91,4 @@ def search(request):
     if query:
         # Perform case-insensitive search on both title and content fields
         results = Article.objects.filter(title__icontains=query) | Article.objects.filter(content__icontains=query)
-    return render(request, 'search_results.html', {'query': query, 'results': results})
+    return render(request, 'blog/search_results.html', {'query': query, 'results': results})
