@@ -1,5 +1,5 @@
 from django.urls import path, include  # Importing path and include functions from Django's URL module
-from .views import Index, BlogView, DetailArticleView, LikeArticle, Featured, DeleteArticleView, add_comment  # Importing views from the current application's views module
+from .views import Index, BlogView, DetailArticleView, LikeArticle, Featured, DeleteArticleView, add_comment, search  # Importing views from the current application's views module
 from django.conf.urls.static import static  # Importing static function from Django's configuration module
 from django.conf import settings  # Importing settings module
 
@@ -16,6 +16,7 @@ urlpatterns = [
     path('traveltips/', include('traveltips.urls')),  # Including traveltips URLs
     path('blog/', BlogView.as_view(), name='blog'),  # Mapping blog URLs
     path('article/<int:pk>/add_comment/', add_comment, name='add_comment'),  # Mapping add_comment URLs
+        path('search/', search, name='search'),
 ]
 
 # Adding URL patterns for serving media files during development

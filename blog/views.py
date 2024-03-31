@@ -83,3 +83,12 @@ def add_comment(request, pk):
     else:
         form = CommentForm()
     return redirect('detail_article', pk=pk)
+
+# Define a function for search with key word
+def search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        # Perform case-insensitive search on both title and content fields
+        results = Article.objects.filter(title__icontains=query) | Article.objects.filter(content__icontains=query)
+    return render(request, 'search_results.html', {'query': query, 'results': results})

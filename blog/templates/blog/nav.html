@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Navbar brand -->
     <!-- <a class="navbar-brand" href="{% url 'index' %}">Find your way to Sri Lanka</a> -->
-    
+
     <!-- Navbar toggle button -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,6 +31,12 @@
           <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
         </li>
       </ul>
+
+      <!-- Search form -->
+      <form class="d-flex" method="GET" action="{% url 'search' %}">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
 
       <!-- Navbar authentication links -->
       <ul class="navbar-nav">

@@ -3,11 +3,11 @@
 }
 
 .custom-ul-style {
-    list-style-type: none; /* Remove default list-style */
-    padding-left: 0; /* Remove left padding */
+    list-style-type: disc;
+    padding-left: 20px;
 }
 
 .custom-image {
-    max-width: 50px; /* Set maximum width for the image */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 200px; /* Set maximum width for the image */
+    height: auto;
 }

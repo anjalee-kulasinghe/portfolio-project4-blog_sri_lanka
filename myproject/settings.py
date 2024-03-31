@@ -27,7 +27,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-anjaleekula-portfoliopr-6ga4uy05669.ws-eu110.gitpod.io','.herokuapp.com']
 
@@ -71,7 +71,8 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        #'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,9 +145,6 @@ STATICFILES_DIRS = [
 
 # Add STATIC_ROOT for collecting static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Add STATICFILES_STORAGE for WhiteNoise
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # URL prefix for serving media files
 MEDIA_URL = '/media/'
