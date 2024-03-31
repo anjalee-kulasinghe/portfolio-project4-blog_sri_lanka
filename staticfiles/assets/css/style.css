@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+}
+
+.custom-ul-style {
+    list-style-type: none; /* Remove default list-style */
+    padding-left: 0; /* Remove left padding */
+}
+
+.custom-image {
+    max-width: 50px; /* Set maximum width for the image */
+    height: auto; /* Maintain aspect ratio */
+}
