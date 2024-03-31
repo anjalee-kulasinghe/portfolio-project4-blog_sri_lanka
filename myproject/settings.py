@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['8000-anjalee-kulasinghe-portf-kd10b5qfeu.us1.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-anjalee-kulasinghe-portf-kd10b5qfeu.us1.codeanyapp.com','.herokuapp.com']
 
 
 # Application definition
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-anjaleekula-portfoliopr-jhu3l6gx0y6.ws-eu110.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-anjalee-kulasinghe-portf-kd10b5qfeu.us1.codeanyapp.com']
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Internationalization
