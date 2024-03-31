@@ -41,16 +41,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'blog',
-    'users',
-    'corsheaders',
-    'crispy_forms',
-    'crispy_bootstrap5',
-    'tinymce',
-    'cityguide',
-    'food',
-    'traveltips',
-    'contact',
+    "django_summernote"
+    "blog",
+    "users",
+    "corsheaders",
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "tinymce",
+    "cityguide",
+    "food",
+    "traveltips",
+    "contact",
 ]
 
 MIDDLEWARE = [
