@@ -16,8 +16,24 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
+# Define the URL patterns for the project
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # Admin URL
+    path('admin/', admin.site.urls),
+
+    # Include the URLs from the 'blog' app
+    path('', include('blog.urls')),
+
+    # Include the URLs from the 'users' app for user accounts
+    path('account/', include('users.urls')),
+
+    # Include the URLs from the 'contact' app for contact forms
+    path('', include('contact.urls')),
 ]
+
+# Configure serving of media files during development
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
