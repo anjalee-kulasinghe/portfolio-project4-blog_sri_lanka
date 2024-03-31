@@ -10,7 +10,10 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)  # Author of the article
     featured = models.BooleanField(default=False)  # Indicates if the article is featured
     likes = models.ManyToManyField(User, related_name='likes', blank=True)  # Users who liked the article
-    banner = models.ImageField(default=False, blank=True) #Image of the article
+    banner = models.ImageField(blank=True, null=True)  # Allow blank and null values
+
+    def __str__(self):
+        return self.title
 
 # Define a model for comments
 class Comment(models.Model):

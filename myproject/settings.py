@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-anjalee-kulasinghe-portf-kd10b5qfeu.us1.codeanyapp.com','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-anjaleekula-portfoliopr-6ga4uy05669.ws-eu110.gitpod.io','.herokuapp.com']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_summernote"
+    "django_summernote",
     "blog",
     "users",
     "corsheaders",
@@ -65,7 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myblog.urls'
+ROOT_URLCONF = 'myproject.urls'
 
 TEMPLATES = [
     {
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myblog.wsgi.application'
+WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
 # Database
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-anjalee-kulasinghe-portf-kd10b5qfeu.us1.codeanyapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Internationalization

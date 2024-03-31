@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %} <!-- Extends base.html template -->
 
-{% load static %} <!-- Load static files -->
+<!--{% load static %}--> <!-- Load static files -->
 
 {% block content %}
 <!-- Start: Banner Image -->
 <div class="row">
-    <div class="col-12">
-        <img src="{% static 'main_banner.png' %}" class="img-fluid" alt="Banner Image"> <!-- Display banner image -->
+    <div class="col-12 banner-container">
+        <img src="{% static 'assets/images/main_banner.png' %}" class="img-fluid w-100" alt="Banner Image"> <!-- Display banner image -->
     </div>
 </div>
 <!-- End: Banner Image -->
