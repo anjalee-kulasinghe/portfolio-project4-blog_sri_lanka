@@ -10,7 +10,7 @@ from .templatetags import get_featured_posts
 
 class Index(View):
     def get(self, request):
-        featured_posts = get_featured_posts.get_featured_posts(2)  # Pass the argument here
+        featured_posts = get_featured_posts.get_featured_posts(3)  # Pass the argument here
         context = {'featured_posts': featured_posts}
         return render(request, 'blog/index.html', context)
 
