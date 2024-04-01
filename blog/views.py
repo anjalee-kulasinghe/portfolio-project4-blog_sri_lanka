@@ -13,7 +13,6 @@ from .forms import CommentForm
 class Index(View):
     def get(self, request):
         return render(request, 'blog/index.html')
-
 # Define a class-based view for displaying a list of articles
 class BlogView(ListView):
     # Display a list of articles on the blog page
@@ -79,10 +78,11 @@ def add_comment(request, pk):
             comment.article = article
             comment.commenter = request.user
             comment.save()
-            return redirect('detail_article', pk=pk)
+            # Redirect to a dedicated comment success page (replace 'comment_success.html' with your actual template name)
+            return redirect('comment_success', pk=pk)
     else:
         form = CommentForm()
-    return redirect('detail_article', pk=pk)
+    return render(request, 'blog/add_comment.html', {'form': form, 'article': article})
 
 # Define a function for search with key word
 def search(request):
