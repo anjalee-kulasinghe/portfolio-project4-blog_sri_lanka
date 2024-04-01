@@ -10,8 +10,20 @@ class UserRegisterForm(UserCreationForm):
 		model = User  # Setting the model to User
 		fields = ['username', 'email', 'password1', 'password2']  # Specifying the fields for the form
 
+"""
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['name', 'bio', 'travel_interests', 'profile_picture']
+"""
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['name', 'bio', 'travel_interests', 'profile_picture']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'travel_interests': forms.TextInput(attrs={'class': 'form-control'}),
+            'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+        }

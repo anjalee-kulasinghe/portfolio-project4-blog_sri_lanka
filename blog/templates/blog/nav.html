@@ -42,7 +42,10 @@
         {% if request.user.is_authenticated %}
           <!-- Display sign out link if user is authenticated -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Edit Profile</a>
+            <a class="nav-link" href="{% url 'create_profile' %}">Create Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
