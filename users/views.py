@@ -29,21 +29,13 @@ class RegisterView(View):
         else:
             # If form data is invalid, render the registration form template with the form and errors
             return render(request, 'users/register.html', {'form': form})
-"""
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')
-    else:
-        form = UserProfileForm(instance=request.user.userprofile)
-    return render(request, 'users/edit_profile.html', {'form': form})
-"""
 
+
+"""
+Create a view to users to complete their account
+"""
 class CreateProfileView(CreateView):
-    model = UserProfile  # Use the UserProfile model
+    model = UserProfile
     form_class = UserProfileForm
     template_name = 'users/create_profile.html'
     success_url = reverse_lazy('index')

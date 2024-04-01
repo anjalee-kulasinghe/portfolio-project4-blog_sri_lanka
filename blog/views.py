@@ -1,19 +1,19 @@
-# Import necessary modules and classes from Django
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-
-# Import models and forms from the current application
 from .models import Article, Comment
 from .forms import CommentForm
+from .templatetags import get_featured_posts
 
-# Define a class-based view for the index page
 class Index(View):
     def get(self, request):
-        return render(request, 'blog/index.html')
+        featured_posts = get_featured_posts.get_featured_posts(2)  # Pass the argument here
+        context = {'featured_posts': featured_posts}
+        return render(request, 'blog/index.html', context)
+
 # Define a class-based view for displaying a list of articles
 class BlogView(ListView):
     # Display a list of articles on the blog page
@@ -21,6 +21,7 @@ class BlogView(ListView):
     queryset = Article.objects.all().order_by('-date')
     template_name = 'blog/blog.html'
     paginate_by = 1
+
 
 # Define a class-based view for displaying a list of featured articles
 class Featured(ListView):
