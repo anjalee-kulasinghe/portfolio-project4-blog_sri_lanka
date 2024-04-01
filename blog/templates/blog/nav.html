@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <!-- Navbar brand -->
-
+    <!-- Logo -->
+    {% load static %}
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" height="40">
+  </a>
     <!-- Navbar toggle button -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,9 +44,6 @@
       <ul class="navbar-nav">
         {% if request.user.is_authenticated %}
           <!-- Display sign out link if user is authenticated -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'create_profile' %}">Create Profile</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
           </li>
