@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <!-- Start: Banner Image -->
 <div class="row">
     <div class="col-12 banner-container">
@@ -10,37 +11,44 @@
 </div>
 <!-- End: Banner Image -->
 
-<div class="row">
-    <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
-        <h1 class="fw-bolder">The best cities to travel to in Sri Lanka</h1>
+<div class="row mt-5">
+    <div class="col-md-8 col-12 mx-md-auto mx-3">
+        <h1 class="fw-bolder text-center mb-4">The Best Cities to Travel to in Sri Lanka</h1>
         <p class="text-muted">Sri Lanka, also known as the "Pearl of the Indian Ocean", is a beautiful island nation located south of India. It's a treasure trove of cultural heritage, stunning natural landscapes, and friendly people. Here are some of the must-visit cities for your Sri Lankan adventure:</p>
-        <ul class="custom-ul-style">
-            <div class="list-item-container">
-                <li>Colombo: Sri Lanka's bustling capital city offers a unique blend of history, culture, and modern life. Explore the colonial-era Fort district, visit the Gangaramaya Temple, or relax on the Galle Face Green promenade overlooking the Indian Ocean.</li>
-                <img src="{% static 'images/colombo.jpg' %}" class="custom-image" alt="Colombo">
+
+        <div class="city-list mt-4">
+            <div class="city-item">
+                <img src="{% static 'images/colombo.jpg' %}" class="img-fluid custom-image" alt="Colombo">
+                <h3>Colombo</h3>
+                <p>Sri Lanka's bustling capital city offers a unique blend of history, culture, and modern life. Explore the colonial-era Fort district, visit the Gangaramaya Temple, or relax on the Galle Face Green promenade overlooking the Indian Ocean.</p>
             </div>
-            <div class="list-item-container">
-                <li>Kandy: This beautiful hilltop city was the last kingdom of Sri Lanka's ancient kings. Visit the Temple of the Tooth Relic, a UNESCO World Heritage Site that houses Sri Lanka's most sacred Buddhist relic, the tooth of the Buddha. Kandy is also a great base for exploring the surrounding tea plantations and mountains.</li>
+            <div class="city-item">
                 <img src="{% static 'images/kandy.jpg' %}" class="custom-image" alt="Kandy">
+                <h3>Kandy</h3>
+                <p>This beautiful hilltop city was the last kingdom of Sri Lanka's ancient kings. Visit the Temple of the Tooth Relic, a UNESCO World Heritage Site that houses Sri Lanka's most sacred Buddhist relic, the tooth of the Buddha. Kandy is also a great base for exploring the surrounding tea plantations and mountains.</p>
             </div>
-            <div class="list-item-container">
-                <li>Galle: This charming coastal town is a UNESCO World Heritage Site. Explore the Galle Fort, a 17th-century Dutch fortress, and wander the narrow streets lined with colonial-era buildings. Galle is also a great place to relax on the beach and enjoy some fresh seafood.</li>
+            <div class="city-item">
                 <img src="{% static 'images/galle.jpg' %}" class="custom-image" alt="Galle">
+                <h3>Galle</h3>
+                <p>This charming coastal town is a UNESCO World Heritage Site. Explore the Galle Fort, a 17th-century Dutch fortress, and wander the narrow streets lined with colonial-era buildings. Galle is also a great place to relax on the beach and enjoy some fresh seafood.</p>
             </div>
-            <div class="list-item-container">
-                <li>Sigiriya: This ancient rock fortress, also known as the "Lion Rock", is a UNESCO World Heritage Site. Climb the 1,200 steps to the top of the rock to see the ruins of the palace and enjoy breathtaking views of the surrounding countryside.</li>
+            <div class="city-item">
+                <h3>Sigiriya</h3>
                 <img src="{% static 'images/sigiriya.jpg' %}" class="custom-image" alt="Sigiriya">
+                <p>This ancient rock fortress, also known as the "Lion Rock", is a UNESCO World Heritage Site. Climb the 1,200 steps to the top of the rock to see the ruins of the palace and enjoy breathtaking views of the surrounding countryside.</p>
             </div>
-            <div class="list-item-container">
-                <li>Anuradhapura: This ancient city was once the capital of Sri Lanka's Sinhalese kings. Explore the ruins of the palaces, temples, and stupas, including the famous Ruwanwelisaya and Jetavanarama stupas. Anuradhapura is a fascinating glimpse into Sri Lanka's rich history.</li>
+            <div class="city-item">
+                <h3>Anuradhapura</h3>
                 <img src="{% static 'images/anuradhapura.jpg' %}" class="custom-image" alt="Anuradhapura">
+                <p>This ancient city was once the capital of Sri Lanka's Sinhalese kings. Explore the ruins of the palaces, temples, and stupas, including the famous Ruwanwelisaya and Jetavanarama stupas. Anuradhapura is a fascinating glimpse into Sri Lanka's rich history.</p>
             </div>
-            <div class="list-item-container">
-                <li>Nuwara Eliya: Nicknamed "Little England", this hill station is a cool retreat from the Sri Lankan heat. Enjoy the beautiful scenery, visit a tea plantation, or go for a hike in the Horton Plains National Park.</li>
+            <div class="city-item">
                 <img src="{% static 'images/nEliya.jpg' %}" class="custom-image" alt="Nuwara Eliya">
+                <h3>Nuwara Eliya</h3>
+                <p>Nicknamed "Little England", this hill station is a cool retreat from the Sri Lankan heat. Enjoy the beautiful scenery, visit a tea plantation, or go for a hike in the Horton Plains National Park.</p>
             </div>
         </ul>
-        <p>These are just a few of the many amazing cities to visit in Sri Lanka. With its beautiful beaches, lush mountains, ancient ruins, and friendly people, Sri Lanka is a perfect destination for a truly unforgettable vacation.</p>
+        <p class="text-center mt-5">These are just a few of the many amazing cities to visit in Sri Lanka. With its beautiful beaches, lush mountains, ancient ruins, and friendly people, Sri Lanka is a perfect destination for a truly unforgettable vacation.</p>
     </div>
 </div>
 {% endblock content %}
