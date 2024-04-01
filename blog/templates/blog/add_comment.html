@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}  <!-- Extending the base.html template -->
+
+{% load crispy_forms_tags %}  <!-- Loading crispy_forms_tags for rendering crispy forms -->
+
+{% block content %}  <!-- Opening the content block -->
+	<div class="row">
+		<div class="col-11 col-md-4 mx-auto mt-5">
+			<h1>Add Comments</h1>  <!-- Heading for Sign Up form -->
+			<form method="POST">  <!-- Opening the form -->
+				{% csrf_token %}  <!-- CSRF token -->
+				{{ form|crispy }}  <!-- Rendering the form using crispy forms -->
+				<div class="form-group">
+					<button class="btn btn-secondary" type="submit">Add Comment</button>  <!-- Submit button for the form -->
+				</div>
+			</form>  <!-- Closing the form -->
+		</div>
+	</div>
+{% endblock content %}  <!-- Closing the content block -->

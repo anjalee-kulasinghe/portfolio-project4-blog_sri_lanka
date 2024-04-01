@@ -11,3 +11,7 @@
     max-width: 200px; /* Set maximum width for the image */
     height: auto;
 }
+
+.comment-details {
+    font-weight: bold;
+}

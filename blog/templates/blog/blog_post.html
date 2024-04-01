@@ -75,23 +75,19 @@
     </div>
 </div>
 <!-- End: Like and Unlike Buttons -->
-
-<!-- Start: Add Comment Button and Form -->
 <div class="row my-3">
     <div class="col-md-6 col-12 mx-md-auto mx-3">
-        <!-- Button to toggle comment form -->
-        <button class="btn btn-outline-primary" id="toggle-comment-form">
-            <i class="fa-regular fa-comment-lines"></i> Add a comment
-        </button>
-
-        <!-- Comment Form (hidden by default) -->
-        <div id="comment-form" style="display: none;">
-            <form method="POST" action="{% url 'add_comment' object.id %}">
-                {% csrf_token %}
-                {{ comment_form.as_p }}
-                <button type="submit" class="btn btn-primary">Post Comment</button>
-            </form>
-        </div>
+        <h3>Comments...........</h3>
+        {% if not object.comment_set.all %}
+            <p>No comments yet...</p>
+            <a href="{% url 'add_comment' pk=object.pk %}">Add comment</a>
+        {% else %}
+            {% for comment in object.comment_set.all %}
+                <p class="comment-details">{{ comment.commenter.username }} - {{ comment.created_at }}</p>
+                <p>{{ comment.text }}</p>
+            {% endfor %}
+            <a href="{% url 'add_comment' pk=object.pk %}">Add comment</a>
+        {% endif %}
     </div>
 </div>
 <!-- End: Add Comment Button and Form -->
@@ -101,7 +97,9 @@
 <!-- JavaScript to toggle comment form visibility -->
 <script>
     document.getElementById('toggle-comment-form').addEventListener('click', function() {
-        document.getElementById('comment-form').style.display = 'block';
+        // Toggle the display of the comment form when the icon is clicked
+        var commentForm = document.getElementById('comment-form');
+        commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
     });
 </script>
 {% endblock scripts %}

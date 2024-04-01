@@ -4,6 +4,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 
 # Import models and forms from the current application
 from .models import Article, Comment
@@ -42,6 +43,7 @@ class DetailArticleView(DetailView):
         article = Article.objects.get(id=self.kwargs.get('pk'))
         if article.likes.filter(pk=self.request.user.id).exists():
             context['liked_by_user'] = True
+        context['pk'] = self.kwargs.get('pk')  # Add this line to include pk in the context
         return context
 
 # Define a class-based view for handling user liking or unliking an article
@@ -69,6 +71,7 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user.id == article.author.id
 
 # Define a function for adding comments to an article
+@login_required
 def add_comment(request, pk):
     article = get_object_or_404(Article, pk=pk)
     if request.method == 'POST':
@@ -78,11 +81,12 @@ def add_comment(request, pk):
             comment.article = article
             comment.commenter = request.user
             comment.save()
-            # Redirect to a dedicated comment success page (replace 'comment_success.html' with your actual template name)
-            return redirect('comment_success', pk=pk)
+            # Redirect back to the article detail view after adding the comment
+            return redirect('detail_article', pk=pk)
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment.html', {'form': form, 'article': article})
+
 
 # Define a function for search with key word
 def search(request):

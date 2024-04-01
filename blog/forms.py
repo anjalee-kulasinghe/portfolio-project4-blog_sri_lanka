@@ -7,16 +7,15 @@ from .models import Comment
 # Define a form for adding comments to an article
 class CommentForm(forms.ModelForm):
     class Meta:
-        # Specify the model to use for the form
         model = Comment
-
-        # Define the fields to include in the form
         fields = ['text']
-
-        # Define labels for the form fields
         labels = {'text': ''}
-
-        # Define widgets to customize the form field's appearance
         widgets = {
             'text': forms.Textarea(attrs={'placeholder': 'Add a comment...', 'rows': 4})
         }
+
+        def clean_text(self):
+            text = self.cleaned_data['text']
+            if len(text.strip()) == 0:
+                raise ValidationError('Comment cannot be empty.')
+            return text

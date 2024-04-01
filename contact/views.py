@@ -3,10 +3,6 @@ from django.views import View
 from .forms import ContactForm
 from .models import Contact
 
-from django.shortcuts import render, redirect
-from django.views import View
-from .forms import ContactForm
-from .models import Contact
 
 class ContactView(View):
     def get(self, request):

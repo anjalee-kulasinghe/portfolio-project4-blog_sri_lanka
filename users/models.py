@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = 'users_userprofile'
+        db_table = "users_userprofile"
 
     def __str__(self):
         return self.user.username
