@@ -34,7 +34,7 @@
 <!-- End: Article Details -->
 
 <!-- Start: Add Article Image -->
-{% if object.banner %}
+{% if "placeholder" in object.banner %}
 <div class="row">
     <div class="col-md-7 col-12 mx-md-auto mb-3 mx-3"> <!-- Adjusted column widths and margin -->
         <img src="{{ object.banner.url }}" class="img-fluid" alt="Article Image">

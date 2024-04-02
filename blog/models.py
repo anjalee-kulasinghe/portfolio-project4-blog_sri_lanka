@@ -2,6 +2,7 @@ from django.db import models
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
 
 # Define a model for articles
 class Article(models.Model):
@@ -11,7 +12,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    banner = models.ImageField(blank=True, null=True)
+    banner = CloudinaryField('image', default='placeholder')
 
     def get_absolute_url(self):
         return reverse('detail_article', kwargs={'pk': self.pk})
