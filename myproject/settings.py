@@ -31,7 +31,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['portfolio-project4-blog.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['.herokuapp.com', '8000-anjaleekula-portfoliopr-6ga4uy05669.ws-eu110.gitpod.io']
 
 
 # Application definition
