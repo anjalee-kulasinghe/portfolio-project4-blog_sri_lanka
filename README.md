@@ -1,110 +1,313 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Anjalee Kulasinghe Online CV
 
-Welcome Anjalee Kulasinghe,
+## Code Institute - Fourth Milestone Project: Full-Stack Toolkit Portfolio Project.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This website was developed to showcase my ability to build a Full-Stack site based on business logic used to control a centrally-owned dataset website.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+Sri Lanka, the "Pearl of the Indian Ocean," has captivated travelers with its stunning beaches, ancient cultural heritage, and surprising affordability. This blog is created as a gateway to discover Sri Lanka's hidden beauty, from lush rainforests to forgotten temples, with practical tips and insights to craft an unforgettable adventure, all at a budget-friendly price.
 
-## Gitpod Reminders
+# Table of Contents
+- [Anjalee Kulasinghe Online CV](#anjalee-kulasinghe-online-cv)
+  - [Code Institute - First Milestone Project: User Centric Frontend Development.](#code-institute---first-milestone-project-user-centric-frontend-development)
+- [Table of Contents](#table-of-contents)
+  - [Demo](#demo)
+    - [A live demo to the website can be found here](#a-live-demo-to-the-website-can-be-found-here)
+  - [UX](#ux)
+  - [User stories](#user-stories)
+    - [Strategy](#strategy)
+    - [Scope](#scope)
+    - [Structure](#structure)
+    - [Skeleton](#skeleton)
+    - [Surface](#surface)
+  - [Technologies](#technologies)
+  - [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement](#features-left-to-implement)
+  - [Testing](#testing)
+    - [Validator Testing](#validator-testing)
+    - [Bugs](#bugs)
+  - [Deployment](#deployment)
+  - [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Demo
 
-`python3 -m http.server`
+![Website look on different devices](static/readme-assets/device_look.PNG)
 
-A blue button should appear to click: _Make Public_,
+### A live demo to the website can be found [here](https://portfolio-project4-blog-5ce2c6935f38.herokuapp.com/)
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## UX
+There are three user groups targeted by this website. They are admins, registered users, and visitors.
+The site is focused on simplicity and ease of navigation for the user's main focus on the blog articles related to Sri Lanka.
 
-A blue button should appear to click: _Make Public_,
+## User stories
+As the sole developer of this website, my goal is to secure this travel blog, empowering users to create profiles, share their adventures through posts with photos, and interact with each other's content. For deeper exploration, users can search and discover new destinations based on keywords, locations, or trending topics, while admins manage users and curate featured content.
 
-Another blue button should appear to click: _Open Browser_.
+I came up with the following user stories, which are applicable to the users (including admin):
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### User Management
+1. As a user, I want to create a profile so I can share my travel experiences.
 
-To log into the Heroku toolbelt CLI:
+    **Acceptance criteria:**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+        * User can register with email, username, and password.
+        * User can edit their profile picture, name, bio, and travel interests.
+        * User profile should be accessible publicly and display basic information.
+2. As an admin, I want to manage user accounts.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+    **Acceptance criteria:**
 
-------
+    * Admin can view a list of all users.
+    * Admin can search for users by username or email.
+    * Admin can edit, suspend, or delete user accounts.
 
-## Release History
+#### Content Creation and Sharing
+1. As a user, I want to create a new blog post to share my travel experiences.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+    **Acceptance criteria:**
 
-**September 20 2023:** Update Python version to 3.9.17.
+    * User can create a new blog post with title, description, and content using an editor.
+    * User can upload photos to be embedded in the blog post.
+    * User can choose categories and tags for their blog post.
+2. As a user, I want to interact with other users' content.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+    **Acceptance criteria:**
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+    * User can like, comment on, and share other users' blog posts.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### Search and Discovery
+1. As a user, I want to search for blog posts based on various criteria.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    **Acceptance criteria:**
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+    * User can search for blog posts by keyword, location, activity, or other relevant criteria.
+    * User can filter search results by date, popularity, or other criteria.
+2. As a user, I want to discover new and interesting content.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+    **Acceptance criteria:**
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+    * Homepage displays featured blog posts chosen by admins.
+    * Users can see trending topics and popular locations based on user engagement.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Strategy
+This travel blog aims to be a one-stop shop for adventurous spirits, fostering a community through user-generated travel stories and photos. Users can discover new destinations and budget-friendly adventures through search, trending topics, and curated content by admins, while the blog leverages SEO and collaborations to reach new explorers and potentials.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Scope
+The travel blog focuses on user-generated content, allowing users to create profiles, share stories and photos in blog posts, and interact with each other's content. Search and discovery functionalities help users explore destinations based on keywords, locations, or trends, while admins manage users and curate featured content on the homepage.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Structure
+I have followed a traditional web structure for the website's design. This includes a persistent top navigation bar that allows users to access different sections of the site from any page.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+* Content Types:
+    * City Guide, Food, and Travel Tips: These sections are implemented using static pages that provide informative content to users.
+    * Contact Us: This section utilizes a database to store messages sent by users. Admins can access and review these messages through the admin interface.
+    * Blog: Users can read blog posts, but commenting requires a registered account. Upon successful registration, users are directed to the login page.
+    * Likes and Dislikes: Users can like and unlike blog posts.
+    * Admin Functionality: Logged-in admins have the ability to delete blog posts.
+    * Search Functionality: User have the chance to search a blog posts using a key word.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+**Website Sections:**
+1. **_Home / Landing page:_** Divided into three sections. The first section is a simple introduction to Sri Lanka. Second section, three of the featured posts which user can read more by cliking it. This section has some images to showcase Sri Lanka.
+2. **_Blog:_** Articles related to Sri Lanka in different areas. There are mature blog posts. The user can like, dislike, and comment. Admins can delete a post. Each page shows a single article; navigation at the bottom can be used to move within the blog posts.
+3. **_City Guide:_** Some information related to the best cities a visitor can travel to within their visit.
+4. **_Food:_** Some information about the most popular types of food that can be found and tried by visitors.
+5. **_Travel Tips:_** Some information can be useful for a visitor when they are planning their visit.
+6. **_Contact Us:_** A contact page featuring messaging can be used to contact the admin, and the information will be saved in the database so the admin can revisit them if needed.
+7. **_Search:_** The search features searching for a blog post via a key word.
+8. **_Sign in, Sign up and Logut:_** New users can register by using Sign Up, and existing users can login. The logout feature is there so that whenever the user needs it, they can logout.
+8. **_Footer:_** This is not the main section of the website but rather an ending to the website with copywriting information.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Skeleton
+The website is designed to be clear and simple. And the site has a simple tree structure with hierarchical flows from top to bottom.
 
-------
+**Flow chart**
+To understand the steps required in order to design the site, I created the below flowchart using lucid charts.
 
-## FAQ about the uptime script
+![flow_chart](static/readme-assets/Flowchart.PNG)
 
-**Why have you added this script?**
+**Wireframe**
+The wireframe is designed using Balsamiq software. The first draft was edited with the guidance of the mentor. The wireframe was designed to focus on each and every section as a and connect them using the navigation.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+My wireframe design in the [(pdf format)](static/readme-assets/wireFrame.pdf)
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+**Entity Relationship Diagram**
+To get an idea about the tables and the connectivity I created the ERD.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+My ERD in the [(pdf format)](static/readme-assets/ERD.pdf)
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
+### Surface
+I have selected a plain color for the main background color. Mainly the white background, so the content is clear and easy to read. Banners are created with brown shades, and the text is in gray. Readme buttons and blog bottom navigation to the pages are in red to give a little bit of attention to the users. The footer is in a darker color to highlight the footer area.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+## Technologies
+1. HTML - To create a basic site
+2. CSS - To create a nice, standout front-end and to give a great user experience
+3. ElephantSQL - To create the database
+4. Django Python - To create the backend. Django and Python offer a compelling combination of features, ease of use, and scalability, making them an excellent option for building a website.
+5. Heroku - To develop the site becaues of simplicity, scalability, and developer-friendly features. Also, since it is ideal for building a blog without getting bogged down in server management.
+3. Balsamiq - To create a wireframe
 
-**Can I opt out?**
+## Features
+### Existing Features
+* **Navigation Bar**
+  * The navigation bar is at the top of the page. The logo is in the left-hand corner of the navigation.
+  * The page navigation links on the website are to the left. Home, Bolg, City Guide, Food, Travel Tips to different pages. Contact Us connect to a form pages. Search is embedded navigation. Login Sign Up, Sign out is align to the right hand side.
+  * The font color is in contrast with the navigation background color.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+![navigation_bar](static/readme-assets/navigation.PNG)
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
 
-**Anything more?**
+* **Home**
+  - Banner on the top with the name of the blog. Page is divided in to 3 mian sections.
+  - Section 1 - brief introduction to Sri Lanka with a image.
+  - Section 2 - three of the featured blog post.
+  - Section 2 - image galary.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+![home_section 1](static/readme-assets/Home_s1.PNG)
+![home_section 2](static/readme-assets/Home_s2.PNG)
+![home_section 3](static/readme-assets/Home_s3.PNG)
 
----
 
-Happy coding!
+
+* **Blog**
+  * In the Blog page, shows different articles posted by different users.
+  * Can like the posts as well as add a comment.
+
+![Blog](static/readme-assets/blog.png)
+
+
+- **City Guide**
+  * In the City Guide, showcase soem best cities a visitor can visti during there travel time.
+
+![City Guide](static/readme-assets/city.PNG)
+
+
+- **Food**
+  - In this page, information is focused on some populer food that a visitor can try.
+
+![Food](static/readme-assets/food.png)
+
+
+- **Travel Tips**
+  - In this page focused on some information that will be usedful for a visitor before they book their trip.
+
+![Travel Tips](static/readme-assets/travel.png)
+
+
+- **Contact us**
+  - In the Contact Us is a simple page wit a form, which help a user to contact the admin via a message. it is conect to the database.
+
+![contact us page](static/readme-assets/contact.PNG)
+![contact us table](static/readme-assets/contact_database.PNG)
+
+
+- **Search**
+  - This feature help the users to easily find blog post with a keyword.
+
+![Search](static/readme-assets/search.png)
+
+
+- **Sign Up**
+  - Using this form, a visitor can registor them self and be a registered user. Link with the database
+
+![Sign up](static/readme-assets/signup.PNG)
+![user table](static/readme-assets/database.PNG)
+
+
+- **Sign In**
+  - Using this form, registered user can login to the site.
+
+![Sign up](static/readme-assets/signin.PNG)
+
+
+- **Sign out**
+  - Using this link user can logout from the site.
+
+![Sign out](static/readme-assets/Logout.PNG)
+
+
+- **Add atticle**
+  - Using this page article can be created.
+
+![Article list](static/readme-assets/admin.PNG)
+![New article](static/readme-assets/article.png)
+
+
+- **Like / Unlike**
+  - Using this button a user can like a post as well as if needed using unlike they can remove the like they made.
+
+![Like](static/readme-assets/like.PNG)
+
+
+- **Comment**
+  - A user who has loged in to the site can add a comment. Users who are not loged in will be redirected to the login page when trying to comment. Added comments will be visible below the post.
+
+![Comment](static/readme-assets/comment.PNG)
+
+- **Footer**
+  - This section includes the social media links through which users can reach me. Below is copywriting information for the Online CV website of Find your way to Sri Lanka.
+
+![contact_section](static/readme-assets/footer.PNG)
+
+
+### Features Left to Implement
+In the future,
+* I would like to create the edit profile page for the users who would like to edit their profiles.
+* Also, I would like to create the tags for the articles.
+* Also, I would like to create the share option for the articles.
+
+## Testing
+* I tested the site, and it works in different web browsers: Chrome, Firefox, and Microsoft Edge.
+* On mobile devices, I tested the my site on a Samsung Galaxy S23 Ultra with the Samsung browser.
+* I confirmed that the site is responsive and functions on different screen sizes using the devtools device toolbar.
+* I confirmed that the navigation and the sections is readable and easy to understand.
+* I confirmed that the form works: it requires entries in field, only accepts an email in the email field, and submit buttons work.
+* I confirmed that the users, contact, comments are saved in to the database.
+
+
+### Bugs
+* **Solved bugs**
+  * When I try to test my site in the local environment I got an error 'CSRF validation does not work on Django using HTTPS'.
+  * With the help of the Stack overflow post I added the following to overcome the issue.
+        `CSRF_TRUSTED_ORIGINS`
+  * Connecting with the images.
+        `Created the satic directory and move the images and add the code related to the stact directory to the settings.py`
+  * When I was trying to develop to the Heroku could not develop the pages. After contactingthe student support i found out that I have used the wrong tamplate and i had to build my project again.
+   ![Old github rapo](https://github.com/anjalee-kulasinghe/portfolio-project4-Find-your-way-to-SriLanka)
+
+
+* **Unfixed Bugs**
+
+When I am trying to create the edit profile page i got an issue to connet to the database. Due to that i have removed the page from the navigation.
+
+
+### Final Deployment to Heroku
+This project was deployed using Heroku.
+Steps of deployment:
+  - Clone the repository.
+  - Create a new Heroku app.
+  - Link the Heroku app to the GitHub repository.
+  - Click on Deploy.
+
+
+## Credits
+### Content
+* The help for some error handling was taken from [stackoverflow](https://stackoverflow.com/questions/38841109/csrf-validation-does-not-work-on-django-using-https).
+* Site layout [layout](https://bootswatch.com/) and [navigation](https://getbootstrap.com/docs/5.0/components/navbar/) from bootstrap.com
+* To add the Post Blog Comments, I took the help from the [Codemy.com](https://www.youtube.com/watch?v=OuOB9ADT_bo) YouTude vedio.
+* Blog content were created using Google gemini AI app
+
+
+### Media
+The imge used as a background image is taken from [Pixabay] and [Pexels].
+
+### Acknowledgements
+* Ideas were taken from the Code Institute's Full Stack Toolkit Portfolio Project projects.
+* The the Code Institute tutor support team for helping me with the correct guidance.
+* Grammer and spelling errors were correctd using quillbot.com
+* My mentor, Medale Oluwafemi, for his invaluable guidance.
