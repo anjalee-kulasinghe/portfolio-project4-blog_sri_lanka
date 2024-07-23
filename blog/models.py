@@ -1,8 +1,9 @@
+# blog/models.py
+
 from django.db import models
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
 from django.urls import reverse
-from cloudinary.models import CloudinaryField
 
 # Define a model for articles
 class Article(models.Model):
@@ -12,7 +13,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    banner = CloudinaryField('image', default='placeholder')
+    banner = models.ImageField(upload_to='banners/', default='banners/placeholder.png')
 
     def get_absolute_url(self):
         return reverse('detail_article', kwargs={'pk': self.pk})
@@ -22,11 +23,10 @@ class Article(models.Model):
 
 # Define a model for comments
 class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)  # Article to which the comment belongs
-    commenter = models.ForeignKey(User, on_delete=models.CASCADE)  # User who made the comment
-    text = models.TextField()  # Text content of the comment
-    created_at = models.DateTimeField(auto_now_add=True)  # Date and time when the comment was created
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    # Define a string representation for the Comment model
     def __str__(self):
         return f'Comment by {self.commenter.username} on {self.article.title}'
