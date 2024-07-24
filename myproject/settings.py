@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
-DEBUG = True  # Set to False in production
+DEBUG = False  # Set to False in production
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
