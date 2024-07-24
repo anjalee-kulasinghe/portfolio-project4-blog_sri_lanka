@@ -1,5 +1,3 @@
-# blog/models.py
-
 from django.db import models
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
@@ -13,7 +11,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     featured = models.BooleanField(default=False)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    banner = models.ImageField(upload_to='banners/', default='banners/placeholder.png')
+    articale_image = models.ImageField(upload_to='', default='placeholder.png')
 
     def get_absolute_url(self):
         return reverse('detail_article', kwargs={'pk': self.pk})

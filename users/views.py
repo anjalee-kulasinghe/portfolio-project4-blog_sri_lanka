@@ -3,7 +3,8 @@ from django.views import View
 from .forms import UserRegisterForm, UserProfileForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import UserProfile
 
@@ -12,29 +13,23 @@ Creating a registration form
 to register new users
 """
 class RegisterView(View):
-    # Handling GET requests to display the registration form
     def get(self, request):
         form = UserRegisterForm()
         return render(request, 'users/register.html', {'form': form})
 
-    # Handling POST requests to process form submission
     def post(self, request):
         form = UserRegisterForm(request.POST)
-
-        # Check if the form data is valid
         if form.is_valid():
-            form.save()
+            user = form.save()
             messages.success(request, 'Your account has been created successfully! Please log in.')
-            return redirect('login')
+            return redirect('create_profile')
         else:
-            # If form data is invalid, render the registration form template with the form and errors
             return render(request, 'users/register.html', {'form': form})
 
-
 """
-Create a view to users to complete their account
+Create a view to allow users to complete their account
 """
-class CreateProfileView(CreateView):
+class CreateProfileView(LoginRequiredMixin, CreateView):
     model = UserProfile
     form_class = UserProfileForm
     template_name = 'users/create_profile.html'
@@ -44,10 +39,10 @@ class CreateProfileView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class UserEditView(UpdateView):
+class UserEditView(LoginRequiredMixin, UpdateView):
     form_class = UserProfileForm
     template_name = 'users/edit_profile.html'
     success_url = reverse_lazy('index')
 
     def get_object(self):
-        return self.request.user
+        return UserProfile.objects.get(user=self.request.user)

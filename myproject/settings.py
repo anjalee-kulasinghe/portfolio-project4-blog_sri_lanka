@@ -2,16 +2,28 @@ import os
 import dj_database_url
 from pathlib import Path
 
+# Import environment variables if env.py exists
 if os.path.isfile('env.py'):
     import env
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = True
+SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
+DEBUG = True  # Set to False in production
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '8000-anjaleekula-portfoliopr-f9awqdmbr60.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = [
+    '.herokuapp.com',
+    'localhost',
+    '8000-anjaleekula-portfoliopr-f9awqdmbr60.ws.codeinstitute-ide.net',
+    '.gitpod.io',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -50,7 +62,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,8 +96,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://*.gitpod.io']
-CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.gitpod.io',
+    'https://8000-anjaleekula-portfoliopr-f9awqdmbr60.ws.codeinstitute-ide.net',
+]
+
+CSRF_COOKIE_SECURE = False
+
+CORS_ALLOWED_ORIGINS = [
+    'https://8000-anjaleekula-portfoliopr-f9awqdmbr60.ws.codeinstitute-ide.net',
+    'https://*.gitpod.io',
+]
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -93,12 +114,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-#STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -108,10 +127,3 @@ LOGIN_URL = 'login'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
-# Cloudinary configuration
-#CLOUDINARY_STORAGE = {
-#    'CLOUD_NAME': os.environ.get('anjiciprojects'),
-#    'API_KEY': os.environ.get('297585357865391'),
-#   'API_SECRET': os.environ.get('g0Gx6yF3Zdn5DkwnhVxkvJJaFy8'),
-#}

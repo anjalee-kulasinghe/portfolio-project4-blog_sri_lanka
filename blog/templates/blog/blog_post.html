@@ -34,10 +34,10 @@
 <!-- End: Article Details -->
 
 <!-- Start: Add Article Image -->
-{% if "placeholder" in object.banner %}
+{% if object.articale_image and not "placeholder" in object.articale_image.url %}
 <div class="row">
     <div class="col-md-7 col-12 mx-md-auto mb-3 mx-3"> <!-- Adjusted column widths and margin -->
-        <img src="{{ object.banner.url }}" class="img-fluid" alt="Article Image">
+        <img src="{{ object.articale_image.url }}" class="img-fluid" alt="Article Image">
     </div>
 </div>
 {% endif %}
