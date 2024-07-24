@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
-DEBUG = False  # Set to False in production
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
@@ -58,6 +58,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myproject.urls'
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 500,
+    'plugins': 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+    'toolbar': 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+}
 
 TEMPLATES = [
     {

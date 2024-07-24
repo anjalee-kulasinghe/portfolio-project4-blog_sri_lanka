@@ -10,31 +10,43 @@
 </div>
 <!-- End: Banner Image -->
 
+<!-- Start: Add Article Button (only visible to logged-in users) -->
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="col-12 text-center my-4">
+        <a href="{% url 'add_article' %}" class="btn btn-primary">Add New Article</a>
+    </div>
+</div>
+{% endif %}
+<!-- End: Add Article Button -->
+
 {% for object in object_list %}
 <!-- Start: Individual Article -->
-	<div class="row">
-		<div class="col-md-6 col-11 mx-md-auto mx-3 mt-5 mb-5">
-			<h3 class="fw-bold">{{ object.title }}</h3>
-			<p class="text-muted"> {{ object.date }}</p>
-			<p class="text-muted">Posted by {{ object.author.username }}</p>
-			{% if object.likes.count == 1 %}
-				<p class="text-muted">{{ object.likes.count }} person likes this post</p>
-			{% else %}
-				<p class="text-muted">{{ object.likes.count }} people like this post</p>
-			{% endif %}
+<div class="row">
+    <div class="col-md-6 col-11 mx-md-auto mx-3 mt-5 mb-5">
+        <h3 class="fw-bold">{{ object.title }}</h3>
+        <p class="text-muted"> {{ object.date }}</p>
+        <p class="text-muted">Posted by {{ object.author.username }}</p>
+        {% if object.likes.count == 1 %}
+            <p class="text-muted">{{ object.likes.count }} person likes this post</p>
+        {% else %}
+            <p class="text-muted">{{ object.likes.count }} people like this post</p>
+        {% endif %}
 
-			<div class="my-3">
-				{{ object.content|truncatewords_html:50|safe }}
-			</div>
+        <div class="my-3">
+            {{ object.content|truncatewords_html:50|safe }}
+        </div>
 
-			<a href="{% url 'detail_article' object.id %}">Read more</a>
-		</div>
-	</div>
+        <a href="{% url 'detail_article' object.id %}">Read more</a>
+    </div>
+</div>
 <!-- End: Individual Article -->
 
+{% endfor %}
+
+<!-- Start: Pagination Navigation -->
 <nav>
     <ul class="pagination">
-        <!-- Start: Pagination Navigation -->
         <div class="mx-auto d-flex flex-row mt-5">
             {% if page_obj.has_previous %}
                 <!-- First Page Link -->
@@ -64,9 +76,8 @@
                 </li>
             {% endif %}
         </div>
-        <!-- End: Pagination Navigation -->
     </ul>
 </nav>
+<!-- End: Pagination Navigation -->
 
-{% endfor %}
 {% endblock content %}

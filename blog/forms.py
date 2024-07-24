@@ -1,10 +1,26 @@
-# Import necessary modules and classes from Django
 from django import forms
-
-# Import the Comment model from the current application
 from .models import Comment
+from .models import Article
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
-# Define a form for adding comments to an article
+"""
+Define a form for adding an article by the user
+"""
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ['title', 'content', 'articale_image']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+"""
+Define a form for adding comments to an article
+"""
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

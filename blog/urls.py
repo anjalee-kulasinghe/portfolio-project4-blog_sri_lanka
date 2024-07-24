@@ -1,7 +1,7 @@
-from django.urls import path, include  # Importing path and include functions from Django's URL module
-from .views import Index, BlogView, DetailArticleView, LikeArticle, Featured, DeleteArticleView, add_comment, search  # Importing views from the current application's views module
-from django.conf.urls.static import static  # Importing static function from Django's configuration module
-from django.conf import settings  # Importing settings module
+from django.urls import path, include 
+from .views import Index, BlogView, DetailArticleView, LikeArticle, Featured, DeleteArticleView, add_comment, search, add_article
+from django.conf.urls.static import static
+from django.conf import settings 
 
 # URL patterns for the application
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
     path('blog/', BlogView.as_view(), name='blog'),  # Mapping blog URLs
     path('article/<int:pk>/add_comment/', add_comment, name='add_comment'),  # Mapping add_comment URLs
     path('search/', search, name='search'),
+    path('add_article/', add_article, name='add_article'),
 ]
 
 # Adding URL patterns for serving media files during development
