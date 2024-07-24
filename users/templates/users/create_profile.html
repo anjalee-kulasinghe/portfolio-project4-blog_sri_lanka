@@ -1,23 +1,21 @@
 {% extends 'blog/base.html' %}  <!-- Extending the base.html template -->
-
 {% load crispy_forms_tags %}  <!-- Loading crispy_forms_tags for rendering crispy forms -->
 
-
 {% block content %}  <!-- Opening the content block -->
-	<div class="row">
-		<div class="col-11 col-md-4 mx-auto mt-5">
+    <div class="row">
+        <div class="col-11 col-md-4 mx-auto mt-5">
             {% if request.user.is_authenticated %}
-                <h1>Create Profile</h1>  <!-- Heading for Log In form -->
-                <form method="POST">  <!-- Opening the form -->
+                <h1>Create Profile</h1>  <!-- Heading for Create Profile form -->
+                <form method="POST" enctype="multipart/form-data">  <!-- Opening the form with multipart data encoding -->
                     {% csrf_token %}  <!-- CSRF token -->
                     {{ form|crispy }}  <!-- Rendering the form using crispy forms -->
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <button class="btn btn-secondary" type="submit">Create</button>  <!-- Submit button for the form -->
                     </div>
                 </form>  <!-- Closing the form -->
             {% else %}
-                <h2>Please register....</h2>
+                <h2>Please register or <a href="{% url 'login' %}">log in</a> to create a profile.</h2>  <!-- Link to login if not authenticated -->
             {% endif %}
-		</div>
-	</div>
+        </div>
+    </div>
 {% endblock content %}  <!-- Closing the content block -->

@@ -4,21 +4,24 @@
 {% block content %}  <!-- Opening the content block -->
     <div class="row">
         <div class="col-11 col-md-6 mx-auto mt-5">
-            <h1>User Profile</h1>  <!-- Heading indicating user profile -->
-            <form method="post" enctype="multipart/form-data">
+            <h1>Edit Profile</h1>  <!-- Heading for Edit Profile form -->
+            <form method="post" enctype="multipart/form-data">  <!-- Form with multipart data encoding -->
                 {% csrf_token %}
                 {{ form|crispy }}
-                <!--<div class="form-group">
+                <div class="form-group">
                     <label for="id_profile_picture">Profile Picture:</label>
                     <input type="file" name="profile_picture" id="id_profile_picture">
                     {% if user.userprofile.profile_picture %}
-                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture">
+                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="mt-3" style="max-width: 150px; max-height: 150px;">
                     {% endif %}
-                </div>-->
-                <div class="form-group">
+                </div>
+                <div class="form-group mt-3">
                     <button class="btn btn-primary" type="submit">Update</button>  <!-- Submit button for the form -->
                 </div>
             </form>
+            {% if not request.user.userprofile %}
+                <p>You haven't created a profile yet. <a href="{% url 'create_profile' %}">Create Profile</a></p>  <!-- Link to create profile if not created -->
+            {% endif %}
         </div>
     </div>
 {% endblock content %}  <!-- Closing the content block -->

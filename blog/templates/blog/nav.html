@@ -4,7 +4,8 @@
     {% load static %}
     <a class="navbar-brand" href="#">
       <img src="{% static 'images/logo.png' %}" alt="Logo" height="40">
-  </a>
+    </a>
+
     <!-- Navbar toggle button -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,7 +44,16 @@
       <!-- Navbar authentication links -->
       <ul class="navbar-nav">
         {% if request.user.is_authenticated %}
-          <!-- Display sign out link if user is authenticated -->
+          <!-- Display dropdown for profile-related links if user is authenticated -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              My Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'profile_redirect' %}">Create Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
           </li>

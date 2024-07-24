@@ -7,10 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import UserProfile
+from django.http import Http404
+
 
 """
-Creating a registration form
-to register new users
+View for user registration
 """
 class RegisterView(View):
     def get(self, request):
@@ -26,8 +27,9 @@ class RegisterView(View):
         else:
             return render(request, 'users/register.html', {'form': form})
 
+
 """
-Create a view to allow users to complete their account
+View for creating user profile
 """
 class CreateProfileView(LoginRequiredMixin, CreateView):
     model = UserProfile
@@ -39,10 +41,33 @@ class CreateProfileView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
+"""
+View for editing user profile
+"""
 class UserEditView(LoginRequiredMixin, UpdateView):
     form_class = UserProfileForm
     template_name = 'users/edit_profile.html'
     success_url = reverse_lazy('index')
 
-    def get_object(self):
+    def get(self, request, *args, **kwargs):
+        try:
+            self.object = self.get_object()
+        except UserProfile.DoesNotExist:
+            return redirect('create_profile')
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self, queryset=None):
         return UserProfile.objects.get(user=self.request.user)
+
+
+"""
+View to redirect user based on profile existence
+"""
+@login_required
+def profile_redirect_view(request):
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+        return redirect('edit_profile')
+    except UserProfile.DoesNotExist:
+        return redirect('create_profile')
