@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.conf import settings
+from django.contrib import messages
 
 import os
 
@@ -131,6 +132,7 @@ def add_article(request):
             article = form.save(commit=False)
             article.author = request.user
             article.save()
+            messages.success(request, 'Article has been successfully added!')  # Add success message
             return redirect('blog')  # Redirect to the blog list or any other page
     else:
         form = ArticleForm()

@@ -2,6 +2,10 @@ import os
 import dj_database_url
 from pathlib import Path
 
+# Load environment variables from .env (if using python-dotenv)
+from dotenv import load_dotenv
+load_dotenv()
+
 # Import environment variables if env.py exists
 if os.path.isfile('env.py'):
     import env
@@ -9,14 +13,15 @@ if os.path.isfile('env.py'):
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-secret-key")
-DEBUG = False
+SECRET_KEY = os.environ.get("SECRET_KEY", "9k<jR4Ue$o$i@k=")
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
     'localhost',
-    '8000-anjaleekula-portfoliopr-f9awqdmbr60.ws.codeinstitute-ide.net',
+    '8000-anjaleekula-portfoliopr-k2fv7empuq1.ws.codeinstitute-ide.net',
     '.gitpod.io',
+    '*.ws.codeinstitute-ide.net',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -83,8 +88,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
+# Database configuration with debugging
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")
+print(f"DATABASE_URL: {DATABASE_URL} (type: {type(DATABASE_URL)})")  # Debugging
+if isinstance(DATABASE_URL, bytes):
+    DATABASE_URL = DATABASE_URL.decode('utf-8')
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -105,6 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://*.gitpod.io',
     'https://8000-anjaleekula-portfoliopr-f9awqdmbr60.ws.codeinstitute-ide.net',
+    'https://*.ws.codeinstitute-ide.net',
 ]
 
 CSRF_COOKIE_SECURE = False
